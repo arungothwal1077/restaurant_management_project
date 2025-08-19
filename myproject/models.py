@@ -2,10 +2,9 @@
 from django.contrib import admin
 from djnago.urls import path
 from django.shortcuts import render
-from djnago.conf import settings
 
 
-#view function 
+#view function for home page
 def home(request):
     context = {
         'restaurant_name' : 'Chtkara Bites'
@@ -14,6 +13,14 @@ def home(request):
     }
     return render(request, 'home.html', context)
 
+#view function for contact page
+def contact(request):
+    context = {
+        'email': 'support@chatkarabites.com',
+        'phone': '+91-9068245991',
+        'address': '123 Main Street , Jaipur , India'
+}
+return render(request, 'contact.html',context)
 
 # URL Patterns
 urlpatterns = [
@@ -23,9 +30,7 @@ urlpatterns = [
 ]
 
 """
-#settins.py (add at bottom)
-PHONE_NUMBER = "+919068245991"
- creat a file : template/home.html
+#templates/hpme.html
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +39,15 @@ PHONE_NUMBER = "+919068245991"
 <body>
     <h1>{{ restaurant_name }}</h1>
     <p>{{ message }}</p>
-    <p>contact us: {{ phone }}</p> 
+    <a> href='/contact/">contact/ Us</a>
 </body>
 <html>
+#templates/contact.html
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <p>Email: {{ email }}</p>
+    <p>Address: {{ address }}</a>
+</body>
+</html>
 """
