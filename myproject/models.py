@@ -1,53 +1,38 @@
 #myproject/urls.py
-from django.contrib import admin
-from djnago.urls import path
+from djnago.contrib import admin 
+from django.urls import path
 from django.shortcuts import render
 
-
-#view function for home page
 def home(request):
     context = {
-        'restaurant_name' : 'Chtkara Bites'
-        'message': 'welcome to our restaurant'
-        'phone': settings.PHONE_NUMBER
+        'restaurant_name': 'Chatkara Bites',
+        'message': 'Welcome to our restaurant',
+        'phone': '+91-9068245991'
     }
     return render(request, 'home.html', context)
 
-#view function for contact page
-def contact(request):
-    context = {
-        'email': 'support@chatkarabites.com',
-        'phone': '+91-9068245991',
-        'address': '123 Main Street , Jaipur , India'
-}
-return render(request, 'contact.html',context)
 
-# URL Patterns
-urlpatterns = [
+urlpatterns = {
     path('admin/', admin.site.urls),
-    path('', home name= 'home'),
-
-]
-
+    path('',home,name='home'),
+}
 """
-#templates/hpme.html
-<!DOCTYPE html>
+
+#templates/home.html
+<!DOTYPE html>
 <html>
 <head>
-     <title>{{ restauranrt_name }}</title>
-</head>
+   <title{{ restauranrt_name }}</title>
+   <style>
+   body { font-family: Arial, sans; bakground:#f9f9f9; text-align:centre; padding:50pxl; }
+   h1 { color:#2ce50; margin-bottom:10px; }
+   p{ color:#555; font-size:18px; margin:5px; }
+   .phone { margin-top:15px; font-weight;bold; color:#2980b9; }
+  </style>
 <body>
-    <h1>{{ restaurant_name }}</h1>
-    <p>{{ message }}</p>
-    <a> href='/contact/">contact/ Us</a>
-</body>
-<html>
-#templates/contact.html
-</head>
-<body>
-    <h1>Contact Us</h1>
-    <p>Email: {{ email }}</p>
-    <p>Address: {{ address }}</a>
+   <h1>{{ restaurant_name }}</h1>
+   <p>{{ messsage }}</p>
+   <p class= "phone"> {{ phone }}</p>
 </body>
 </html>
 """
